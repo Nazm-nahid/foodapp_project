@@ -7,5 +7,6 @@ urlpatterns =[
     path('admin/', admin.site.urls),
     path('', include('reslist.urls')),
     url(r'^user/',include('User.url')),
-    url('',include('foodlist.urls'))
+    url('',include('foodlist.urls')),
+    url(r'^rider/',include('Rider.url')),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
