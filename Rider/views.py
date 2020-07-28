@@ -18,15 +18,15 @@ def storeview(request, resturent):
 
 def ac(request, _ ):
     if request.method=='POST':
-        t = Rider.objects.get(order_no=_)
+        t = Rider.objects.get(id=_)
         t.rider_ac = user
         t.save()
-        r = Store.objects.get(order_no=_)
+        r = Store.objects.get(id=_)
         r.rider_ac = user
         r.save()
         
 def pay(request, _ ):
     if request.method=='POST':
-        r = Store.objects.get(order_no=_)
+        r = Store.objects.get(id=_)
         r.payment = 'Done'
         r.save()
