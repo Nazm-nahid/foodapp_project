@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Rider,Store
 
 
@@ -15,3 +15,18 @@ def storeview(request, resturent):
     list_items = stores.filter(resturent=resturent)
 
     return render(request, template, {"items": list_items})
+
+def ac(request, _ ):
+    if request.method=='POST':
+        t = Rider.objects.get(order_no=_)
+        t.rider_ac = user
+        t.save()
+        r = Store.objects.get(order_no=_)
+        r.rider_ac = user
+        r.save()
+        
+def pay(request, _ ):
+    if request.method=='POST':
+        r = Store.objects.get(order_no=_)
+        r.payment = 'Done'
+        r.save()
