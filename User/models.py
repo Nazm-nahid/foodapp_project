@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 CHOICES= [
-    ('Register as a User', 'khadok'),
-    ('Register as a Rider', 'rider'),
-    ('Register as a Store', 'store'),
+    ('khadok','Register as a User'),
+    ( 'rider','Register as a Rider'),
+    ( 'store','Register as a Store'),
     ]
 
 class UserProfile(models.Model):
