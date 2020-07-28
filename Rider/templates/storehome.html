@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="album py-5 bg-light">
+<div class="container">
+<div class="row">
+{% for food in items %}
+	{%%}
+<div class="col-lg-4">
+			<div class="box-element product">
+				<h6><strong>{{food.order_item}}</strong></h6>
+				<hr>
+				<h4 style="display: inline-block; float: right"><strong>TK: {{food.deli_address}}</strong></h4>
+				<h4 style="display: inline-block; float: right"><strong>TK: {{food.time}}</strong></h4>
+				<h4 style="display: inline-block; float: right"><strong>TK: {{food.rider_ac}}</strong></h4>
+				<h4 style="display: inline-block; float: right"><strong>TK: {{food.payment}}</strong></h4>
+
+			</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
