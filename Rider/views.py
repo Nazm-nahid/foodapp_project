@@ -46,7 +46,11 @@ def accept(request,slug):
             t2=Store.objects.get(key=str(slug))
             t2.rider_ac = str(u)
             t2.save()
-            return HttpResponse("Accepted")
+            template = 'Rider/riderhome.html'
+            riders = Rider.objects.all()
+            items = riders.filter(rider_ac='none')
+            return render(request, template, {"riders": items})
+
     else:
         return HttpResponse('Illigal Action!!!')
 
@@ -57,6 +61,9 @@ def payment(request,slug):
             t2 = Store.objects.get(key=str(slug))
             t2.payment = 'Yes'
             t2.save()
-            return HttpResponse('Payment Done')
+            template = 'Rider/storehome.html'
+            stores = Store.objects.all()
+            list_items = stores.filter(resturent=request.user)
+            return render(request, template, {"items": list_items})
     else:
         return HttpResponse('Illigal Action!!!')
