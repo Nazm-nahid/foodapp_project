@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="/rider/riderhome/">
+    <input type="submit" value="Other Rides">
+</form>
+<div class="album py-5 bg-light">
+<div class="container">
+<div class="row">
+{% for food in riders %}
+		<div class="col-lg-4">
+					<div class="box-element product">
+						<h6><strong>{{food.resturent}}</strong></h6>
+						<hr>
+						<h4 style="display: inline-block; float: right"><strong>Delivary Address : {{food.deli_address}}</strong></h4>
+						<h4 style="display: inline-block; float: right"><strong>Phone No : {{food.phone}}</strong></h4>
+						<h4 style="display: inline-block; float: right"><strong>Time : {{food.time}}</strong></h4>
+
+					</div>
+
+		</div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

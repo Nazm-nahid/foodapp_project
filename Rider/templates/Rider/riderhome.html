@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
+<form action="/rider/myride/">
+    <input type="submit" value="My Ride">
+</form>
 <div class="album py-5 bg-light">
 <div class="container">
 <div class="row">
 {% for food in riders %}
 		<div class="col-lg-4">
-					<div class="box-element product">
+					<br class="box-element product">
 						<h6><strong>{{food.resturent}}</strong></h6>
 						<hr>
 						<h4 style="display: inline-block; float: right"><strong>Delivary Address : {{food.deli_address}}</strong></h4>
+						<h4 style="display: inline-block; float: right"><strong>Phone No : {{food.phone}}</strong></h4>
 						<h4 style="display: inline-block; float: right"><strong>Time : {{food.time}}</strong></h4>
 
 					</div>
-					  <form class="site-form" action="/rider/ac/" method='POST'>
+					  <form class="site-form" action="/rider/ac/{{food.id}}/" method='POST'>
 							{% csrf_token %}
 						  <input type="submit" value="Accept">
 					    </form>

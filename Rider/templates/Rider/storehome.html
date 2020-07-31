@@ -7,12 +7,14 @@
 <div class="col-lg-4">
 			<div class="box-element product">
 				<h6><strong>{{food.order_item}}</strong></h6>
+				<h6><strong>Quantity: {{food.quantity}}</strong></h6>
 				<hr>
 				<h4 style="display: inline-block; float: right"><strong>Dalivary Address : {{food.deli_address}}</strong></h4>
+				<h4 style="display: inline-block; float: right"><strong>Phone : {{food.phone}}</strong></h4>
 				<h4 style="display: inline-block; float: right"><strong>Time : {{food.time}}</strong></h4>
 				<h4 style="display: inline-block; float: right"><strong>Rider : {{food.rider_ac}}</strong></h4>
 				<h4 style="display: inline-block; float: right"><strong>Payment: {{food.payment}}</strong></h4>
-				<form class="site-form" action="/rider/pay/" method='POST'>
+				<form class="site-form" action="/rider/pay/{{food.key}}/" method='POST'>
 					{% csrf_token %}
 					<input type="submit" value="Payment Done">
 			    	</form>
