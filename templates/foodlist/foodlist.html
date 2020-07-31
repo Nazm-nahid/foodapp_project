@@ -7,16 +7,18 @@
 <div class="col-lg-4">
 			<img class="thumbnail" src="{{ food.food_image.url }}">
 			<div class="box-element product">
-				<h6><strong>{{food.name}}</strong></h6>
+				<h6><strong>{{ food.food_name }}</strong></h6>
 				<hr>
-
-				<button data-product="{{food.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
 				
 				<h4 style="display: inline-block; float: right"><strong>TK: {{food.price}}</strong></h4>
 
-        <p class="card-text">Info :{{ food.food_info }}</p>
+       			 <p class="card-text">Info :{{ food.food_info }}</p>
 
 			</div>
+		<form action="{% url 'cart' %}" method="POST" class="btn-block">
+							{% csrf_token %}
+							<input type="submit" class="float-right btn btn-light  form-control" value="Add To Cart">
+		</form>
 </div>
 {% endfor %}
 </div>
