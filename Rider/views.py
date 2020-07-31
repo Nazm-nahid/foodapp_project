@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Rider,Store
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -9,24 +10,18 @@ def riderview(request):
 
     return render(request, template, {"riders": riders})
 
-def storeview(request, resturent):
+def storeview(request):
     template = 'Rider/storehome.html'
-    stores = Store.objects.all()
-    list_items = stores.filter(resturent=resturent)
+    list_items = Store.objects.all()
 
     return render(request, template, {"items": list_items})
 
-def ac(request, _ ):
-    if request.method=='POST':
-        t = Rider.objects.get(id=_)
-        t.rider_ac = user
-        t.save()
-        r = Store.objects.get(id=_)
-        r.rider_ac = user
-        r.save()
-        
-def pay(request, _ ):
-    if request.method=='POST':
-        r = Store.objects.get(id=_)
-        r.payment = 'Done'
-        r.save()
+
+def accept(request):
+    if request.method == 'POST':
+        return HttpResponse('Accepted')
+
+
+def payment(request):
+    if request.method == 'POST':
+        return HttpResponse('Payment Done')
