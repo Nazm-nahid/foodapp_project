@@ -20,7 +20,10 @@ def signup_user(request):
                 if (user.userprofile.check == 'khadok'):
                     return redirect("reslist")
                 else:
-                    return HttpResponse(user.userprofile.check)
+                    if (user.userprofile.check == 'rider'):
+                        return redirect("riderhome")
+                    else:
+                        return redirect("storehome")
     else:
         form = UserCreationFormExtended()
         profile = UserProfileForm()
@@ -36,7 +39,13 @@ def login_user(request):
             if "next" in request.POST:
                 return redirect(request.POST.get("next"))
             else:
-                return redirect("reslist")
+                if (user.userprofile.check == 'khadok'):
+                    return redirect("reslist")
+                else:
+                    if (user.userprofile.check == 'rider'):
+                        return redirect("riderhome")
+                    else:
+                        return redirect("storehome")
     else:
         form = AuthenticationForm()
     return render(request, "User/login.html", {"form": form})
