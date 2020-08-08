@@ -15,9 +15,11 @@
        			 <p class="card-text">Info :{{ food.food_info }}</p>
 
 			</div>
-		<form action="{% url 'cart' %}" method="POST" class="btn-block">
+		<form action="{% url 'cart' food.id %}" id=food.id   method="POST"  class="btn-block">
 							{% csrf_token %}
-							<input type="submit" class="float-right btn btn-light  form-control" value="Add To Cart">
+			<input type="submit"  class="float-right btn btn-light form-control" value="Add To Cart">
+
+
 		</form>
 </div>
 {% endfor %}
