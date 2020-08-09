@@ -13,9 +13,10 @@
 
 				<h1>Fill out the form!</h1>
    			 <div class="container">
-     		 <form method="POST">
-				 {{form.as_p }}
+     		 <form action="{% url 'checkout' f_id %}" method="POST">
 				 {% csrf_token %}
+				 {{form2}}
+				 {{form}}
         		<input type="submit" class="btn btn-success" value="Checkout">
      		 </form>
 

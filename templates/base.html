@@ -38,6 +38,12 @@
 			<p>
 				Welcome {{user.last_name}} . .
 			</p>
+				{% if user.userprofile.check == 'rider' %}
+					<a href="{% url 'riderhome' %}"class="btn btn-warning">Rides</a>
+				{% endif %}
+				{% if user.userprofile.check == 'store' %}
+					<a href="{% url 'storehome' %}"class="btn btn-warning">Orders</a>
+				{% endif %}
 				<a href="javascript:{document.getElementById('logout_user').submit()}" class="btn btn-warning">Logout</a>
 				<form id="logout_user" action="{% url 'logout' %}" method='POST'>
 				{% csrf_token %}
